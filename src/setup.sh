@@ -162,6 +162,8 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     ./create_directories.sh
+    ./create_symbolic_links.sh "$@"
+    ./create_local_config_files.sh
     ./install/main.sh
     ./preferences/main.sh
 }

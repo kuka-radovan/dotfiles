@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# inspired by http://natelandau.com/my-mac-osx-bash_profile/
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Make terminal better
+
+alias ~="cd ~"                              # Go Home
+alias cd..="cd ../"                         # Go back 1 directory level (for fast typers)
+alias ..="cd ../"                           # Go back 1 directory level
+alias ...="cd ../../"                       # Go back 2 directory levels
+alias ....="cd ../../../"                   # Go back 3 directory levels
+alias wks="cd ~/Workspace"                  # Go to workspace
+alias less="less -FSRXc"                    # Preferred "less" implementation
+alias cp="cp -iv"                           # Preferred "cp" implementation
+alias mv="mv -iv"                           # Preferred "mv" implementation
+alias ls="ls -GFh"                          # Preferred "ls" implementation
+alias mkdir="mkdir -pv"                     # Preferred "mkdir" implementation
+alias f="open -a Finder ./"                 # Opens current directory in MacOS Finder
+alias c="clear"                             # Clear terminal display
+alias o="open"                              # Open from the terminal
+alias which="type -all"                     # Find executables
+alias path="echo -e ${PATH//:/\\n}"         # Echo all executable Paths
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Networking
+
+alias myip='ipconfig getifaddr en0'         # Public facing IP Address
+alias clear-dns-cache="sudo dscacheutil -flushcache; \
+                       sudo killall -HUP mDNSResponder" # Flush out the DNS Cache
+alias openPorts='sudo lsof -i | grep LISTEN'# All listening connections
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Git
+
+alias s="git status"
+alias p="git pull"
+alias d="git d"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Shorter commands for `Homebrew`.
+
+alias brewi="brew install"
+alias brewr="brew uninstall"
+alias brews="brew search"
+alias brewup="brew update \
+                && brew upgrade \
+                && brew prune \
+                && brew cleanup \
+                && brew doctor"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# System operations & information
+
+alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete" # Recursively delete .DS_Store files
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend" # Lock screen
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Web development
+
+alias editHosts='sudo edit /etc/hosts'      # Edit /etc/hosts file
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Update applications
+
+alias update="sudo softwareupdate --install --all \
+            && brew update \
+            && brew upgrade \
+            && brew cleanup \
+            && npm install -g npm \
+            && npm update -g"
