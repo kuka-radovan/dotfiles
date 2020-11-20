@@ -99,8 +99,7 @@ download_dotfiles() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    cd "$dotfilesDirectory/src" \
-        || return 1
+    cd "$dotfilesDirectory/src" || return 1
 
 }
 
@@ -137,8 +136,7 @@ main() {
     # Ensure that the following actions
     # are made relative to setup file path.
 
-    cd "$(dirname "${BASH_SOURCE[0]}")" \
-        || exit 1
+    cd "$(dirname "${BASH_SOURCE[0]}")" || exit 1
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Load utils
@@ -150,6 +148,10 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    skip_questions "$@" && skipQuestions=true
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     ask_for_sudo
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -157,8 +159,7 @@ main() {
     # and if not, it most likely means that the dotfiles were not
     # yet set up, and they will need to be downloaded.
 
-    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh" &> /dev/null \
-        || download_dotfiles
+    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh" &> /dev/null || download_dotfiles
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     ./create_directories.sh
@@ -166,6 +167,20 @@ main() {
     ./create_local_config_files.sh
     ./install/main.sh
     ./preferences/main.sh
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    if cmd_exists "git"; then
+        if [ "$(git config --get remote.origin.url)" != "$DOTFILES_ORIGIN" ]; then
+            ./initialize_git_repository.sh "$DOTFILES_ORIGIN"
+        fi
+    fi
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    if ! $skipQuestions; then
+        ./restart.sh
+    fi
 }
 
 printf '\n\n'

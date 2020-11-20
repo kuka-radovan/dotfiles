@@ -17,5 +17,3 @@ brew_install "ImageOptim" "imageoptim" "homebrew/cask" "cask"
 brew_install "ImageMagick" "imagemagick"
 brew_install "TablePlus" "tableplus" "homebrew/cask" "cask"
 brew_install "Postman" "postman" "homebrew/cask" "cask"
-
-brew_install "Hyper terminal" "hyper" "homebrew/cask" "cask"

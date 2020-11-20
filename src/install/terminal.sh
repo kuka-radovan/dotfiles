@@ -15,7 +15,7 @@ install_plugin() {
 print_in_purple "\n   Terminal\n\n"
 
 # Install VSCode
-brew_install "Hyper" "hyper" "homebrew/cask" "cask"
+brew_install "Hyper terminal" "hyper" "homebrew/cask" "cask"
 
 printf "\n"
 

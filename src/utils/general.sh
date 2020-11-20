@@ -210,7 +210,6 @@ show_spinner() {
     # Display spinner while the commands are being executed.
 
     while kill -0 "$PID" &>/dev/null; do
-
         frameText="   [${FRAMES:i++%NUMBER_OR_FRAMES:1}] $MSG"
 
         # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -224,6 +223,5 @@ show_spinner() {
         # Clear frame text.
 
         tput rc
-
     done
 }
