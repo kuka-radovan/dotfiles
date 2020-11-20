@@ -1,7 +1,9 @@
 #!/bin/bash
 
+COMPUTER_NAME=kuko-macbook
+
 cd "$(dirname "${BASH_SOURCE[0]}")" \
-    && . "../utils.sh"
+    && . "../utils/general.sh"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -75,10 +77,10 @@ execute "defaults write -g QLPanelAnimationDuration -float 0" \
 execute "defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false" \
     "Disable resume system-wide"
 
-execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string 'Laptop' && \
-         sudo scutil --set ComputerName 'laptop' && \
-         sudo scutil --set HostName 'laptop' && \
-         sudo scutil --set LocalHostName 'laptop'" \
+execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME && \
+         sudo scutil --set ComputerName $COMPUTER_NAME && \
+         sudo scutil --set HostName $COMPUTER_NAME && \
+         sudo scutil --set LocalHostName $COMPUTER_NAME" \
     "Set computer name"
 
 execute "sudo systemsetup -setrestartfreeze on" \
@@ -120,8 +122,8 @@ execute "defaults write com.apple.dock wvous-tr-corner -int 2 && \
          defaults write com.apple.dock wvous-tr-modifier -int 0" \
     "Set top right screen corner to Mission Control"
 
-execute "defaults write com.apple.dock wvous-tr-corner -int 5 && \
-         defaults write com.apple.dock wvous-tr-modifier -int 0" \
+execute "defaults write com.apple.dock wvous-br-corner -int 5 && \
+         defaults write com.apple.dock wvous-br-modifier -int 0" \
     "Bottom right screen corner to Start screen saver"
 
 killall "SystemUIServer" &> /dev/null

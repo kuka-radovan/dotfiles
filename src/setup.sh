@@ -4,9 +4,10 @@ declare -r GITHUB_REPOSITORY="kuka-radovan/dotfiles"
 
 declare -r DOTFILES_ORIGIN="git@github.com:$GITHUB_REPOSITORY.git"
 declare -r DOTFILES_TARBALL_URL="https://github.com/$GITHUB_REPOSITORY/tarball/master"
-declare -r DOTFILES_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/master/src/utils.sh"
+declare -r DOTFILES_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/master/src/utils/general.sh"
 
-declare dotfilesDirectory="/tmp/dotfiles"
+declare dotfilesDirectory="$HOME/workspace/dotfiles"
+declare skipQuestions=false
 
 # ----------------------------------------------------------------------
 # | Helper Functions                                                   |
@@ -34,31 +35,73 @@ download_dotfiles() {
     local tmpFile=""
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    # Download dotfiles to temp files.
 
     print_in_purple "\n • Download and extract archive\n\n"
 
     tmpFile="$(mktemp /tmp/dotfiles-archive)"
 
     download "$DOTFILES_TARBALL_URL" "$tmpFile"
-    print_result $? "Download archive from github" "true"
+    print_result $? "Download archive" "true"
+    printf "\n"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    # Extract archive.
+
+    if ! $skipQuestions; then
+
+        ask_for_confirmation "Do you want to store the dotfiles in '$dotfilesDirectory'?"
+
+        if ! answer_is_yes; then
+            dotfilesDirectory=""
+            while [ -z "$dotfilesDirectory" ]; do
+                ask "Please specify another location for the dotfiles (path): "
+                dotfilesDirectory="$(get_answer)"
+            done
+        fi
+
+        # Ensure the `dotfiles` directory is available
+
+        while [ -e "$dotfilesDirectory" ]; do
+            ask_for_confirmation "'$dotfilesDirectory' already exists, do you want to overwrite it?"
+            if answer_is_yes; then
+                rm -rf "$dotfilesDirectory"
+                break
+            else
+                dotfilesDirectory=""
+                while [ -z "$dotfilesDirectory" ]; do
+                    ask "Please specify another location for the dotfiles (path): "
+                    dotfilesDirectory="$(get_answer)"
+                done
+            fi
+        done
+
+        printf "\n"
+
+    else
+
+        rm -rf "$dotfilesDirectory" &> /dev/null
+
+    fi
 
     mkdir -p "$dotfilesDirectory"
+    print_result $? "Create '$dotfilesDirectory'" "true"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Extract archive in the `dotfiles` directory.
 
     extract "$tmpFile" "$dotfilesDirectory"
     print_result $? "Extract archive" "true"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Remove archive.
+
     rm -rf "$tmpFile"
-    print_result $? "Remove archive from temp"
+    print_result $? "Remove archive"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     cd "$dotfilesDirectory/src" \
         || return 1
+
 }
 
 download_utils() {
@@ -99,8 +142,8 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Load utils
-    if [ -x "utils.sh" ]; then
-        . "utils.sh" || exit 1
+    if [ -x "./utils/general.sh" ]; then
+        . "./utils/general.sh" || exit 1
     else
         download_utils || exit 1
     fi
@@ -118,6 +161,8 @@ main() {
         || download_dotfiles
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    ./create_directories.sh
+    ./install/main.sh
     ./preferences/main.sh
 }
 
