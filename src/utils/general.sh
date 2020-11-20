@@ -17,6 +17,20 @@ ask_for_confirmation() {
     printf "\n"
 }
 
+skip_questions() {
+
+     while :; do
+        case $1 in
+            -y|--yes) return 0;;
+                   *) break;;
+        esac
+        shift 1
+    done
+
+    return 1
+
+}
+
 get_answer() {
     printf "%s" "$REPLY"
 }
