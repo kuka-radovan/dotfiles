@@ -58,7 +58,7 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Web development
 
-alias editHosts='sudo edit /etc/hosts'      # Edit /etc/hosts file
+alias editHosts='sudo code /etc/hosts'      # Edit /etc/hosts file
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Update applications
