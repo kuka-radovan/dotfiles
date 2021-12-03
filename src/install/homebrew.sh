@@ -7,6 +7,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 install_homebrew() {
     if ! cmd_exists "brew"; then
+        ask_for_sudo
+        
         printf "\n" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &> /dev/null
         #  └─ simulate the ENTER keypress
     fi
