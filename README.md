@@ -9,7 +9,7 @@ Personal macOS dotfiles.
 To set up the dotfiles run the appropriate snippet in the terminal:
 
 ```sh
-bash -c "$(curl -LsS https://raw.github.com/kuka-radovan/dotfiles/master/src/setup.sh)"
+bash -c "$(curl -LsS https://raw.github.com/kuka-radovan/dotfiles/HEAD/src/setup.sh)"
 ```
 
 That's it! ✨
