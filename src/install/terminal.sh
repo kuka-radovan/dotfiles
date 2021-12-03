@@ -15,12 +15,12 @@ install_plugin() {
 print_in_purple "\n   Terminal\n\n"
 
 # Install VSCode
-brew_install "Hyper terminal" "hyper" "homebrew/cask" "cask"
+brew_install "Hyper terminal" "hyper" "--cask"
 
 printf "\n"
 
 # Install hyper plugins
-install_plugin "hyper-statusline" "Status Line"
+# install_plugin "hyper-statusline" "Status Line"
 install_plugin "hyper-chesterish" "Chesterish Theme"
 install_plugin "hypercwd" "HyperCwd"
 install_plugin "hyperlinks" "Hyperlinks"
