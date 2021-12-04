@@ -2,6 +2,12 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "utils/general.sh"
+    
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+is_git_repository() {
+    git rev-parse &> /dev/null
+}
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
