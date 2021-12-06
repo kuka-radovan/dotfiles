@@ -24,3 +24,4 @@ print_in_purple "\n • System preferences\n"
 ./textedit.sh
 ./trackpad.sh
 ./ui_and_ux.sh
+./sound.sh
