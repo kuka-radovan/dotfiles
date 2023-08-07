@@ -15,10 +15,12 @@ alias less="less -FSRXc"                    # Preferred "less" implementation
 alias cp="cp -iv"                           # Preferred "cp" implementation
 alias mv="mv -iv"                           # Preferred "mv" implementation
 alias ls="ls -GFh"                          # Preferred "ls" implementation
+alias rm="rm -rf --"                        # Preferred "rm" implementation
 alias mkdir="mkdir -pv"                     # Preferred "mkdir" implementation
 alias f="open -a Finder ./"                 # Opens current directory in MacOS Finder
 alias c="clear"                             # Clear terminal display
 alias o="open"                              # Open from the terminal
+alias g="git"                               # Run Git
 alias which="type -all"                     # Find executables
 alias path="echo -e ${PATH//:/\\n}"         # Echo all executable Paths
 
@@ -43,7 +45,7 @@ alias d="git d"
 alias brewi="brew install"
 alias brewr="brew uninstall"
 alias brews="brew search"
-alias brewup="brew update \
+alias brewup="brew update --quiet \
                 && brew upgrade \
                 && brew prune \
                 && brew cleanup \
@@ -53,7 +55,7 @@ alias brewup="brew update \
 # System operations & information
 
 alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete" # Recursively delete .DS_Store files
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend" # Lock screen
+alias afk="osascript -e 'tell application \"System Events\" to sleep'" # Lock screen
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Web development

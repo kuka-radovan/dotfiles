@@ -15,7 +15,6 @@ install_xcode_command_line_tools() {
 
     xcode-select --install &> /dev/null
 
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Wait until the `Xcode Command Line Tools` are installed.
 
     execute \
@@ -32,7 +31,6 @@ install_xcode() {
         open "macappstores://itunes.apple.com/en/app/xcode/id497799835"
     fi
 
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Wait until `Xcode` is installed.
 
     execute \

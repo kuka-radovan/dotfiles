@@ -8,6 +8,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 print_in_purple "\n   Apps\n\n"
 
+brew_install "Alfred" "alfred" "--cask"
 brew_install "Franz" "franz" "--cask"
 brew_install "AppCleaner" "appcleaner" "--cask"
 brew_install "Toggl track" "toggl-track" "--cask"
@@ -20,3 +21,4 @@ brew_install "Zeplin" "zeplin" "--cask"
 brew_install "Ruler" "free-ruler" "--cask"
 brew_install "Notion" "notion" "--cask"
 brew_install "XMind" "xmind" "--cask"
+brew_install "Android File Transfer" "android-file-transfer" "--cask"

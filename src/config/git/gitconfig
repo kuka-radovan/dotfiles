@@ -1,13 +1,14 @@
 [alias]
-    a = commit --amend
+    a = add
+    b = branch
     c = commit
+    ca = !git add -A && git commit     # Commit all changes.
+    co = checkout
     d = diff -- . ':!*package-lock.json' ':!*yarn.lock'
+    f = fetch
     p = push
     r = rebase
     s = status
-    ca = !git add -A && git commit     # Commit all changes.
-    co = checkout
-    br = branch
     unmerge = !git reset --hard HEAD && git clean -d -f && git submodule update && git status
     last = log -1 HEAD
 
@@ -41,7 +42,7 @@
 
 [diff "bin"]
     # Use `hexdump` to diff binary files.
-    textconv = hexdump -v -C
+    textconv = hexdump --canonical --no-squeezing
 
 [help]
     # If a command is mistyped, make Git automatically run
@@ -66,6 +67,7 @@
     # Make `git push` automatically push relevant
     # annotated tags when pushing branches out.
     followTags = true
+	autoSetupRemote = true
 
 [user]
     # Do not guess the user's identity.
