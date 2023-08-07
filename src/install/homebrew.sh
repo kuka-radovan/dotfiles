@@ -65,6 +65,8 @@ main() {
     set_homebrew_to_path
     opt_out_of_analytics
 
+    brew bundle install --file="./Brewfile"
+
     brew_update
     brew_upgrade
 }
