@@ -2,12 +2,12 @@
 
 declare -r GITHUB_REPOSITORY="kuka-radovan/dotfiles"
 
+declare -r DOTFILES_RELEASE_BRANCH="ver-2"
 declare -r DOTFILES_ORIGIN="git@github.com:$GITHUB_REPOSITORY.git"
-declare -r DOTFILES_TARBALL_URL="https://github.com/$GITHUB_REPOSITORY/tarball/master"
-declare -r DOTFILES_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/master/src/utils/general.sh"
+declare -r DOTFILES_TARBALL_URL="https://github.com/$GITHUB_REPOSITORY/tarball/$DOTFILES_RELEASE_BRANCH"
+declare -r DOTFILES_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$DOTFILES_RELEASE_BRANCH/src/utils/general.sh"
 
 declare dotfilesDirectory="$HOME/workspace/dotfiles"
-declare skipQuestions=false
 
 # ----------------------------------------------------------------------
 # | Helper Functions                                                   |
@@ -47,41 +47,33 @@ download_dotfiles() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    if ! $skipQuestions; then
+    ask_for_confirmation "Do you want to store the dotfiles in '$dotfilesDirectory'?"
 
-        ask_for_confirmation "Do you want to store the dotfiles in '$dotfilesDirectory'?"
+    if ! answer_is_yes; then
+        dotfilesDirectory=""
+        while [ -z "$dotfilesDirectory" ]; do
+            ask "Please specify another location for the dotfiles (path): "
+            dotfilesDirectory="$(get_answer)"
+        done
+    fi
 
-        if ! answer_is_yes; then
+    # Ensure the `dotfiles` directory is available
+
+    while [ -e "$dotfilesDirectory" ]; do
+        ask_for_confirmation "'$dotfilesDirectory' already exists, do you want to overwrite it?"
+        if answer_is_yes; then
+            rm -rf "$dotfilesDirectory"
+            break
+        else
             dotfilesDirectory=""
             while [ -z "$dotfilesDirectory" ]; do
                 ask "Please specify another location for the dotfiles (path): "
                 dotfilesDirectory="$(get_answer)"
             done
         fi
+    done
 
-        # Ensure the `dotfiles` directory is available
-
-        while [ -e "$dotfilesDirectory" ]; do
-            ask_for_confirmation "'$dotfilesDirectory' already exists, do you want to overwrite it?"
-            if answer_is_yes; then
-                rm -rf "$dotfilesDirectory"
-                break
-            else
-                dotfilesDirectory=""
-                while [ -z "$dotfilesDirectory" ]; do
-                    ask "Please specify another location for the dotfiles (path): "
-                    dotfilesDirectory="$(get_answer)"
-                done
-            fi
-        done
-
-        printf "\n"
-
-    else
-
-        rm -rf "$dotfilesDirectory" &> /dev/null
-
-    fi
+    printf "\n"
 
     mkdir -p "$dotfilesDirectory"
     print_result $? "Create '$dotfilesDirectory'" "true"
@@ -141,22 +133,28 @@ extract() {
 # ----------------------------------------------------------------------
 
 main() {
-    # Ensure that the following actions
-    # are made relative to setup file path.
+    printf '\n\n'
+    echo '  ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗'
+    echo '  ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝'
+    echo '  ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗'
+    echo '  ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║'
+    echo '  ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║'
+    echo '  ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝'
+    printf '\n'
 
-    cd "$(dirname "${BASH_SOURCE[0]}")" || exit 1
+    # Ensure that the following actions are made relative to setup file path.
+
+    cd "$(dirname "${BASH_SOURCE[0]}")" \
+        || exit 1
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Load utils
+
     if [ -x "./utils/general.sh" ]; then
         . "./utils/general.sh" || exit 1
     else
         download_utils || exit 1
     fi
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    skip_questions "$@" && skipQuestions=true
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -167,14 +165,8 @@ main() {
     # and if not, it most likely means that the dotfiles were not
     # yet set up, and they will need to be downloaded.
 
-    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh" &> /dev/null || download_dotfiles
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    ./create_directories.sh
-    ./create_symbolic_links.sh "$@"
-    ./create_local_config_files.sh
-    ./install/main.sh
-    ./preferences/main.sh
+    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh" &> /dev/null \
+        || download_dotfiles
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -186,18 +178,7 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    if ! $skipQuestions; then
-        ./restart.sh
-    fi
+    ./restart.sh
 }
-
-printf '\n\n'
-echo '  ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗'
-echo '  ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝'
-echo '  ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗'
-echo '  ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║'
-echo '  ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║'
-echo '  ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝'
-printf '\n'
 
 main "$@"
