@@ -128,6 +128,16 @@ extract() {
     return 1
 }
 
+verify_os() {
+    kernel_name="$(uname -s)"
+
+    if [ "$kernel_name" != "Darwin" ]; then
+        printf "Sorry, this script is intended only for macOS"
+    fi
+
+    return 1
+}
+
 # ----------------------------------------------------------------------
 # | Main                                                               |
 # ----------------------------------------------------------------------
@@ -155,6 +165,12 @@ main() {
     else
         download_utils || exit 1
     fi
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Ensure the OS is MacOS
+
+    verify_os \
+        || exit 1
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
