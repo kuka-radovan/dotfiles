@@ -1,0 +1,175 @@
+" ----------------------------------------------------------------------
+" | General Settings                                                   |
+" ----------------------------------------------------------------------
+
+set nocompatible                    " Don't make Vim vi-compatibile.
+
+syntax on                           " Enable syntax highlighting.
+
+if has('autocmd')
+    filetype plugin indent on
+    "           │     │    └──────── Enable file type detection.
+    "           │     └───────────── Enable loading of indent file.
+    "           └─────────────────── Enable loading of plugin files.
+endif
+
+set autoindent                      " Copy indent to the new line.
+
+set backspace=indent                " ┐
+set backspace+=eol                  " │ Allow `backspace`
+set backspace+=start                " ┘ in insert mode.
+
+if has('wildignore')
+    set backupskip=/tmp/*           " ┐ Don't create backups
+    set backupskip+=/private/tmp/*  " ┘ for certain files.
+endif
+
+set clipboard=unnamed               " ┐
+                                    " │ Use the system clipboard
+if has('unnamedplus')               " │ as the default register.
+    set clipboard+=unnamedplus      " │
+endif                               " ┘
+
+set cpoptions+=$                    " When making a change, don't
+                                    " redisplay the line, and instead,
+                                    " put a `$` sign at the end of
+                                    " the changed text.
+
+if has('syntax')
+    set colorcolumn=73              " Highlight certain column(s).
+    set cursorline                  " Highlight the current line.
+endif
+
+set encoding=utf-8 nobomb           " Use UTF-8 without BOM.
+
+if has('cmdline_hist')
+    set history=5000                " Increase command line history.
+endif
+
+if has('extra_search')
+
+    set hlsearch                    " Enable search highlighting.
+
+    set incsearch                   " Highlight search pattern
+                                    " as it is being typed.
+endif
+
+set ignorecase                      " Ignore case in search patterns.
+
+
+set laststatus=2                    " Always show the status line.
+
+set lazyredraw                      " Do not redraw the screen while
+                                    " executing macros, registers
+                                    " and other commands that have
+                                    " not been typed.
+
+set listchars=tab:▸\                " ┐
+set listchars+=trail:·              " │ Use custom symbols to
+set listchars+=eol:↴                " │ represent invisible characters.
+set listchars+=nbsp:_               " ┘
+
+set magic                           " Enable extended regexp.
+" set mouse+=a                        " Enable mouse support.
+set mousehide                       " Hide mouse pointer while typing.
+set noerrorbells                    " Disable error bells.
+
+set nojoinspaces                    " When using the join command,
+                                    " only insert a single space
+                                    " after a `.`, `?`, or `!`.
+
+set nomodeline                      " Disable for security reasons.
+                                    " https://github.com/numirias/security/blob/cf4f74e0c6c6e4bbd6b59823aa1b85fa913e26eb/doc/2019-06-04_ace-vim-neovim.md#readme
+
+set nostartofline                   " Kept the cursor on the same column.
+set number                          " Show line number.
+
+if has('linebreak')
+    set numberwidth=5               " Increase the minimal number of
+                                    " columns used for the `line number`.
+endif
+
+set report=0                        " Report the number of lines changed.
+
+if has('cmdline_info')
+    set ruler                       " Show cursor position.
+endif
+
+set scrolloff=5                     " When scrolling, keep the cursor
+                                    " 5 lines below the top and 5 lines
+                                    " above the bottom of the screen.
+
+set shortmess=aAItW                 " Avoid all the hit-enter prompts.
+
+if has('cmdline_info')
+    set showcmd                     " Show the command being typed.
+endif
+
+set showmode                        " Show current mode.
+
+if has('syntax')
+    set spelllang=en_us             " Set the spellchecking language.
+endif
+
+set smartcase                       " Override `ignorecase` option
+                                    " if the search pattern contains
+                                    " uppercase characters.
+
+if has('syntax')
+    set synmaxcol=2500              " Limit syntax highlighting (this
+                                    " avoids the very slow redrawing
+                                    " when files contain long lines).
+endif
+
+set tabstop=4                       " ┐
+set softtabstop=4                   " │ Set global <TAB> settings.
+set shiftwidth=4                    " │
+set expandtab                       " ┘
+
+set ttyfast                         " Enable fast terminal connection.
+
+if has('virtualedit')
+    set virtualedit=all             " Allow cursor to be anywhere.
+endif
+
+set visualbell                      " ┐
+set noerrorbells                    " │ Disable beeping and window flashing.
+set t_vb=                           " ┘ https://vim.wikia.com/wiki/Disable_beeping
+
+if has('wildmenu')
+    set wildmenu                    " Enable enhanced command-line
+endif                               " completion (by hitting <TAB> in
+                                    " command mode, Vim will show the
+                                    " possible matches just above the
+                                    " command line with the first
+                                    " match highlighted).
+if has('windows')
+    set winminheight=0              " Allow windows to be squashed.
+endif
+
+" Prevent `Q` in `normal` mode from entering `Ex` mode.
+nmap Q <Nop>
+
+
+" ----------------------------------------------------------------------
+" | Color Scheme                                                       |
+" ----------------------------------------------------------------------
+
+set t_Co=256                   " Enable full-color support.
+
+set background=dark            " Use colors that look good
+                               " on a dark background.
+
+" Set custom configurations for when the
+" Solarized theme is used from Vim's Terminal mode.
+"
+" https://github.com/altercation/vim-colors-solarized
+
+if !has("gui_running")
+    let g:solarized_contrast = "high"
+    let g:solarized_termcolors = 256
+    let g:solarized_termtrans = 1
+    let g:solarized_visibility = "high"
+endif
+
+silent! colorscheme solarized  " Use custom color scheme.

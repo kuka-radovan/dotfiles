@@ -132,7 +132,7 @@ verify_os() {
     kernel_name="$(uname -s)"
 
     if [ "$kernel_name" != "Darwin" ]; then
-        printf "Sorry, this script is intended only for macOS"
+        printf "Sorry, this script is intended only for macOS. Exiting..."
     fi
 
     return 1
@@ -181,8 +181,12 @@ main() {
     # and if not, it most likely means that the dotfiles were not
     # yet set up, and they will need to be downloaded.
 
-    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh" &> /dev/null \
-        || download_dotfiles
+    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh" &> /dev/null || download_dotfiles
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    ./create_workspace_directory.sh
+    ./create_symbolic_links.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -197,4 +201,4 @@ main() {
     ./restart.sh
 }
 
-main "$@"
+main
