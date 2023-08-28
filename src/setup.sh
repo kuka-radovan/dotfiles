@@ -186,7 +186,7 @@ main() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     ./create_workspace_directory.sh
-    ./create_symbolic_links.sh
+    ./create_symbolic_links.sh "$@"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -201,4 +201,4 @@ main() {
     ./restart.sh
 }
 
-main
+main "$@"
