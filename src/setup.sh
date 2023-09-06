@@ -133,9 +133,10 @@ verify_os() {
 
     if [ "$kernel_name" != "Darwin" ]; then
         printf "Sorry, this script is intended only for macOS. Exiting..."
+        return 1
     fi
 
-    return 1
+    return 0
 }
 
 # ----------------------------------------------------------------------
