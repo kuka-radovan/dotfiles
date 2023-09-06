@@ -7,7 +7,7 @@ declare -r DOTFILES_ORIGIN="git@github.com:$GITHUB_REPOSITORY.git"
 declare -r DOTFILES_TARBALL_URL="https://github.com/$GITHUB_REPOSITORY/tarball/$DOTFILES_RELEASE_BRANCH"
 declare -r DOTFILES_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$DOTFILES_RELEASE_BRANCH/src/utils/general.sh"
 
-declare dotfilesDirectory="$HOME/workspace/dotfiles"
+declare dotfilesDirectory="$HOME/Workspace/dotfiles"
 
 # ----------------------------------------------------------------------
 # | Helper Functions                                                   |
@@ -175,8 +175,6 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    echo "=======================================================";
-
     ask_for_sudo
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -188,20 +186,19 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ./create_workspace_directory.sh
     ./create_symbolic_links.sh "$@"
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     if cmd_exists "git"; then
         if [ "$(git config --get remote.origin.url)" != "$DOTFILES_ORIGIN" ]; then
-            ./initialize_git_repository.sh "$DOTFILES_ORIGIN"
+            ./utils/initialize_git_repository.sh "$DOTFILES_ORIGIN"
         fi
     fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ./restart.sh
+    ./utils/restart.sh
 }
 
 main "$@"
