@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 # If needed, add Homebrew to the PATH.
 
 if ! command -v brew &> /dev/null && \
@@ -11,7 +10,6 @@ if ! command -v brew &> /dev/null && \
 fi
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 # Configure Homebrew to not auto-update before running commands
 # such as: `brew install`, `brew upgrade`, and `brew tap`.
 #

@@ -5,14 +5,13 @@ source_bash_files() {
     declare -r CURRENT_DIRECTORY="$(pwd)"
 
     declare -r -a FILES_TO_SOURCE=(
-        "bash_init"
+        "shell_init"
 
-        "bash_aliases"
-        "bash_autocompletion"
-        "bash_exports"
-        "bash_functions"
-        "bash_options"
-        "bash_prompt"
+        "shell_aliases"
+        "shell_exports"
+        "shell_functions"
+        "shell_options"
+        "shell_prompt"
 
         "bash.local"  # For local settings that should
                       # not be under version control.

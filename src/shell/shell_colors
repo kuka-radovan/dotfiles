@@ -25,6 +25,7 @@ LSCOLORS+="cc" # Directory writable to others, with sticky bit
 LSCOLORS+="bd" # Directory writable to others, without sticky bit
 
 export LSCOLORS
+export CLICOLOR=1
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Enable color support.

@@ -8,7 +8,7 @@ enable_color_support() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Load OS specific color support.
 
-    . "bash_colors"
+    . "shell_colors"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
