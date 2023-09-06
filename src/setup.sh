@@ -190,15 +190,15 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    if cmd_exists "git"; then
-        if [ "$(git config --get remote.origin.url)" != "$DOTFILES_ORIGIN" ]; then
-            ./utils/initialize_git_repository.sh "$DOTFILES_ORIGIN"
-        fi
-    fi
+    # if cmd_exists "git"; then
+    #     if [ "$(git config --get remote.origin.url)" != "$DOTFILES_ORIGIN" ]; then
+    #         ./utils/initialize_git_repository.sh "$DOTFILES_ORIGIN"
+    #     fi
+    # fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    ./utils/restart.sh
+    # ./utils/restart.sh
 }
 
 main "$@"
