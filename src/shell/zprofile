@@ -13,7 +13,7 @@ source_bash_files() {
         "shell_options"
         "shell_prompt"
 
-        "bash.local"  # For local settings that should
+        "shell.local"  # For local settings that should
                       # not be under version control.
     )
 
@@ -23,18 +23,15 @@ source_bash_files() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     for i in ${!FILES_TO_SOURCE[*]}; do
-
         file="$HOME/.${FILES_TO_SOURCE[$i]}"
 
         [ -r "$file" ] \
             && . "$file"
-
     done
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     cd "$CURRENT_DIRECTORY"
-
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
