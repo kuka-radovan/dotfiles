@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 answer_is_yes() {
     [[ "$REPLY" =~ ^[Yy]$ ]] \

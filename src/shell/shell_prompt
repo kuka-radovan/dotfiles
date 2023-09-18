@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 enable_color_support() {
     if infocmp xterm-256color &> /dev/null; then

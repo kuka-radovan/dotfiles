@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 declare -r GITHUB_REPOSITORY="kuka-radovan/dotfiles"
 

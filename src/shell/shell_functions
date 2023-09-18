@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Create new directories and enter the first one.

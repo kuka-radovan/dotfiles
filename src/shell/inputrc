@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Readline library configuration options.
 # http://ss64.com/bash/syntax-inputrc.html

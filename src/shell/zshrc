@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 [ -n "$PS1" ] \
     && . "$HOME/.zprofile"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # If needed, add Homebrew to the PATH.
