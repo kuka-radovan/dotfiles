@@ -30,7 +30,7 @@ alias path="echo -e ${PATH//:/\\n}"         # Echo all executable Paths
 alias myip='ipconfig getifaddr en0'         # Public facing IP Address
 alias clear-dns-cache="sudo dscacheutil -flushcache; \
                        sudo killall -HUP mDNSResponder" # Flush out the DNS Cache
-alias openPorts='sudo lsof -i | grep LISTEN'# All listening connections
+alias openPorts='sudo lsof -i | grep LISTEN' # All listening connections
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Git

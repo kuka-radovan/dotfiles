@@ -34,5 +34,4 @@ setopt histignoredups   # Do not enter command lines into the history list if th
 setopt histnostore      # Do not enter command lines into the history list.
 setopt histreduceblanks # Remove superfluous blanks before adding lines to the history.
 setopt sharehistory     # Share history between all sessions.
-setopt -s cmdhist       # Save all lines of a multiple-line command in the same history entry.
 setopt histappend       # Append history lines to the history file rather than overwriting the file.

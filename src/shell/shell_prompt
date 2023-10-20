@@ -82,8 +82,9 @@ get_git_repository_details() {
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 set_prompts() {
-    local bold=$(tput bold 2> /dev/null)
-    local reset=$(tput sgr0 2> /dev/null)
+    local bold=$(tput bold)
+    local reset=$(tput sgr0)
+    local newline=$'\n'
 
     local cyan=""
     local green=""
@@ -114,18 +115,20 @@ set_prompts() {
     # | PS1 - Default interactive prompt                               |
     # ------------------------------------------------------------------
 
-    PS1="\[\033]0;\W\007\]" # Terminal title (set to the
+    precmd () { print -Pn "\e]2; %~\a" } # title bar prompt
+
+    #PS1="%{\033]0;\W\007%}" # Terminal title (set to the
                             # current working directory)
 
-    PS1+="$reset$bold"
-    PS1+="$orange\u"        # Username
+    PS1="$reset$bold"
+    PS1+="$orange%n"        # Username
     PS1+="$white@"
-    PS1+="$yellow\h"        # Host
+    PS1+="$yellow%m"        # Host
     PS1+="$white: "
-    PS1+="$green\w"         # Working directory
-    PS1+="\$(get_git_repository_details \"$white on $cyan\")"
-    PS1+="\n"
-    PS1+="\[$reset\]\[$white\]$ \[$reset\]"
+    PS1+="$green%~"         # Working directory
+    PS1+="$(get_git_repository_details \"$white on $cyan\")"
+    PS1+="${newline}"
+    PS1+="%{$reset%}%{$white%}$ %{$reset%}"
 
     export PS1
 
