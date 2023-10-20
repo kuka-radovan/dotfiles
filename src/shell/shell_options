@@ -1,55 +1,38 @@
-#!/bin/zsh
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Enable `vi` editing mode.
 # https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Readline-vi-Mode
 
 set -o vi
 
+# Changing Directory
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Automatically prepend `cd` to directory names.
 
-setopt -s autocd
+setopt autocd           # Automatically prepend `cd` to directory names.
+setopt autopushd        # Automatically push directory on dirstack.
+setopt nopushdsilent    # Do not print the directory stack after pushd or popd.
+setopt pushdignoredups  # Do not push multiple copies of the same directory onto the directory stack.
 
+# Shell Completion
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Autocorrect typos in path names when using the `cd` command.
 
-setopt -s cdspell
+setopt correct          # Autocorrect typos in path names when using the `cd` command.
+setopt no_listbeep      # Disable beep when completing ambiguous glob patterns.
+setopt listpacked       # Varaible col width for multi-column lists.
 
+# Shell Expansion and Globbing
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Check the window size after each command and, if necessary, update
-# the values of `LINES` and `COLUMNS`.
 
-setopt -s checkwinsize
+setopt extendedglob     # Enable extended globbing (#, ~, ^).
+setopt nocaseglob       # Match filenames in a case-insensitive fashion when performing filename expansion.
+setopt dotglob          # Include filenames beginning with a "." in the filename expansion.
 
+# History and History Expansion
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Save all lines of a multiple-line command in the same history entry.
 
-setopt -s cmdhist
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Include filenames beginning with a "." in the filename expansion.
-
-setopt -s dotglob
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Use extended pattern matching features.
-
-setopt -s extglob
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Append to the history file rather then overwriting it.
-
-setopt -s histappend
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Do not attempt to search the PATH for possible completions when
-# completion is attempted on an empty line.
-
-setopt -s no_empty_cmd_completion
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Match filenames in a case-insensitive fashion when performing
-# filename expansion.
-
-setopt -s nocaseglob
+setopt no_histbeep      # Disable beep when accessing nonexistent history.
+setopt histignoredups   # Do not enter command lines into the history list if they are duplicates of the previous event.
+setopt histnostore      # Do not enter command lines into the history list.
+setopt histreduceblanks # Remove superfluous blanks before adding lines to the history.
+setopt sharehistory     # Share history between all sessions.
+setopt -s cmdhist       # Save all lines of a multiple-line command in the same history entry.
+setopt histappend       # Append history lines to the history file rather than overwriting the file.

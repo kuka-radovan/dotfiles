@@ -22,8 +22,8 @@ source_bash_files() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    for i in ${!FILES_TO_SOURCE[*]}; do
-        file="$HOME/.${FILES_TO_SOURCE[$i]}"
+    for i in ${(@i)FILES_TO_SOURCE}; do
+        file="$HOME/.$i"
 
         [ -r "$file" ] \
             && . "$file"
