@@ -37,6 +37,10 @@ create_symlinks() {
         sourceFile="$(pwd)/$i"
         targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
+        echo $(readlink "$targetFile")
+        echo $sourceFile
+        echo "$(readlink "$targetFile")" == "$sourceFile"
+
         if [[ ! -e "$targetFile" ]]; then
             execute \
                 "ln -fs $sourceFile $targetFile" \
