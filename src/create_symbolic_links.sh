@@ -37,7 +37,7 @@ create_symlinks() {
         sourceFile="$(pwd)/$i"
         targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
-        if [ ! -e "$targetFile" ]; then
+        if [ ! -e "$targetFile" > /dev/null 2>&1 ]; then
             execute \
                 "ln -fs $sourceFile $targetFile" \
                 "$targetFile → $sourceFile"
