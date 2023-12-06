@@ -16,7 +16,7 @@ initialize_git_repository() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    if [[ -z "$GIT_ORIGIN" ]] then
+    if [ -z "$GIT_ORIGIN" ]; then
         print_error "Please provide a URL for the Git origin"
         exit 1
     fi

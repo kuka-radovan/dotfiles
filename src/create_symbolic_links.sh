@@ -37,12 +37,12 @@ create_symlinks() {
         sourceFile="$(pwd)/$i"
         targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
-        if [[ ! -e "$targetFile" ]] then
+        if [[ ! -e "$targetFile" ]]; then
             execute \
                 "ln -fs $sourceFile $targetFile" \
                 "$targetFile → $sourceFile"
 
-        elif [[ "$(readlink "$targetFile")" == "$sourceFile" ]] then
+        elif [[ "$(readlink "$targetFile")" == "$sourceFile" ]]; then
             print_success "$targetFile → $sourceFile"
         else
             ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"

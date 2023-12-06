@@ -75,7 +75,7 @@ print_question() {
 }
 
 print_result() {
-    if [[ "$1" -eq 0 ]] then
+    if [ "$1" -eq 0 ]; then
         print_success "$2"
     else
         print_error "$2"
@@ -93,9 +93,9 @@ print_warning() {
 }
 
 mkd() {
-    if [[ -n "$1" ]] then
-        if [[ -e "$1" ]] then
-            if [[ ! -d "$1" ]] then
+    if [ -n "$1" ]; then
+        if [ -e "$1" ]; then
+            if [ ! -d "$1" ]; then
                 print_error "$1 - a file with the same name already exists!"
             else
                 print_success "$1"
@@ -149,7 +149,7 @@ execute() {
 
     print_result $exitCode "$MSG"
 
-    if [[ $exitCode -ne 0 ]] then
+    if [ $exitCode -ne 0 ]; then
         print_error_stream < "$TMP_FILE"
     fi
 

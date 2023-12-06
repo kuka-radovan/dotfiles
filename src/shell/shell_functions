@@ -4,7 +4,7 @@
 # Create new directories and enter the first one.
 
 mcd() {
-    if [[ -n "$*" ]] then
+    if [ -n "$*" ]; then
 
         mkdir -p "$@"
         #      └─ make parent directories if needed

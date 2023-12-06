@@ -51,7 +51,7 @@ get_git_repository_details() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Check for untracked files.
 
-    if [[ -n "$(git ls-files --others --exclude-standard)" ]] then
+    if [ -n "$(git ls-files --others --exclude-standard)" ]; then
         tmp="$tmp?";
     fi
 
@@ -94,7 +94,7 @@ set_prompts() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    if [[ "$(tput colors 2> /dev/null || printf "0")" -ge 256 ]] then
+    if [ "$(tput colors 2> /dev/null || printf "0")" -ge 256 ]; then
 
         # Solarized colors.
         # https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized#the-values
@@ -151,8 +151,8 @@ set_prompts() {
     #
     # local dateCmd=""
     #
-    # if [[ "$(date +%N)" != "N" ] || \
-    #    [ ! -x "$(command -v "gdate")" ]] then
+    # if [ "$(date +%N)" != "N" ] || \
+    #    [ ! -x "$(command -v "gdate")" ]; then
     #    dateCmd="date +%s.%N"
     # else
     #    dateCmd="gdate +%s.%N"

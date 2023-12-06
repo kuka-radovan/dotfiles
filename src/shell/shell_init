@@ -5,7 +5,7 @@
 
 if ! command -v brew &> /dev/null && \
   [[ -f /opt/homebrew/bin/brew ]] && \
-  [[ $(sysctl -n machdep.cpu.brand_string) == Apple\ M* ]] then
+  [[ $(sysctl -n machdep.cpu.brand_string) == Apple\ M* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
