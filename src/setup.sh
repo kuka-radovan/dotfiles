@@ -51,7 +51,7 @@ download_dotfiles() {
 
     if ! answer_is_yes; then
         dotfilesDirectory=""
-        while [[ -z "$dotfilesDirectory" ]]; do
+        while [[ -z "$dotfilesDirectory" ]] do
             ask "Please specify another location for the dotfiles (path): "
             dotfilesDirectory="$(get_answer)"
         done
@@ -59,14 +59,14 @@ download_dotfiles() {
 
     # Ensure the `dotfiles` directory is available
 
-    while [[ -e "$dotfilesDirectory" ]]; do
+    while [[ -e "$dotfilesDirectory" ]] do
         ask_for_confirmation "'$dotfilesDirectory' already exists, do you want to overwrite it?"
         if answer_is_yes; then
             rm -rf "$dotfilesDirectory"
             break
         else
             dotfilesDirectory=""
-            while [[ -z "$dotfilesDirectory" ]]; do
+            while [[ -z "$dotfilesDirectory" ]] do
                 ask "Please specify another location for the dotfiles (path): "
                 dotfilesDirectory="$(get_answer)"
             done
