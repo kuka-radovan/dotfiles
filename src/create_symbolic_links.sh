@@ -37,7 +37,7 @@ create_symlinks() {
         sourceFile="$(pwd)/$i"
         targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
-        if [ ! -e "$targetFile" ] || $skipQuestions; then
+        if [ ! -e "$targetFile" ] then
             execute \
                 "ln -fs $sourceFile $targetFile" \
                 "$targetFile → $sourceFile"
@@ -45,18 +45,16 @@ create_symlinks() {
         elif [ "$(readlink "$targetFile")" == "$sourceFile" ]; then
             print_success "$targetFile → $sourceFile"
         else
-            if ! $skipQuestions; then
-                ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
+            ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
 
-                if answer_is_yes; then
-                    rm -rf "$targetFile"
+            if answer_is_yes; then
+                rm -rf "$targetFile"
 
-                    execute \
-                        "ln -fs $sourceFile $targetFile" \
-                        "$targetFile → $sourceFile"
-                else
-                    print_error "$targetFile → $sourceFile"
-                fi
+                execute \
+                    "ln -fs $sourceFile $targetFile" \
+                    "$targetFile → $sourceFile"
+            else
+                print_error "$targetFile → $sourceFile"
             fi
         fi
 
