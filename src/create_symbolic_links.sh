@@ -7,23 +7,23 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 create_symlinks() {
     declare -a FILES_TO_SYMLINK=(
-        "shell/shell_aliases"
-        "shell/shell_exports"
-        "shell/shell_functions"
-        "shell/shell_init"
-        "shell/zlogout"
-        "shell/shell_options"
-        "shell/zprofile"
-        "shell/shell_prompt"
-        "shell/zshrc"
-        "shell/curlrc"
-        "shell/inputrc"
+        "config/shell/shell_aliases"
+        "config/shell/shell_exports"
+        "config/shell/shell_functions"
+        "config/shell/shell_init"
+        "config/shell/zlogout"
+        "config/shell/shell_options"
+        "config/shell/zprofile"
+        "config/shell/shell_prompt"
+        "config/shell/zshrc"
+        "config/shell/curlrc"
+        "config/shell/inputrc"
 
-        "git/gitattributes"
-        "git/gitconfig"
-        "git/gitignore"
+        "config/git/gitattributes"
+        "config/git/gitconfig"
+        "config/git/gitignore"
 
-        "vim/vimrc"
+        "config/vim/vimrc"
     )
 
     local i=""
