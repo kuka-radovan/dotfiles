@@ -51,7 +51,7 @@ download_dotfiles() {
 
     if ! answer_is_yes; then
         dotfilesDirectory=""
-        while [ -z "$dotfilesDirectory" ]; do
+        while [[ -z "$dotfilesDirectory" ]] do
             ask "Please specify another location for the dotfiles (path): "
             dotfilesDirectory="$(get_answer)"
         done
@@ -59,14 +59,14 @@ download_dotfiles() {
 
     # Ensure the `dotfiles` directory is available
 
-    while [ -e "$dotfilesDirectory" ]; do
+    while [[ -e "$dotfilesDirectory" ]] do
         ask_for_confirmation "'$dotfilesDirectory' already exists, do you want to overwrite it?"
         if answer_is_yes; then
             rm -rf "$dotfilesDirectory"
             break
         else
             dotfilesDirectory=""
-            while [ -z "$dotfilesDirectory" ]; do
+            while [[ -z "$dotfilesDirectory" ]] do
                 ask "Please specify another location for the dotfiles (path): "
                 dotfilesDirectory="$(get_answer)"
             done
@@ -131,7 +131,7 @@ extract() {
 verify_os() {
     kernel_name="$(uname -s)"
 
-    if [ "$kernel_name" != "Darwin" ]; then
+    if [[ "$kernel_name" != "Darwin" ]] then
         printf "Sorry, this script is intended only for macOS. Exiting..."
         return 1
     fi
@@ -161,7 +161,7 @@ main() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Load utils
 
-    if [ -x "./utils/general.sh" ]; then
+    if [[ -x "./utils/general.sh" ]] then
         . "./utils/general.sh" || exit 1
     else
         download_utils || exit 1
