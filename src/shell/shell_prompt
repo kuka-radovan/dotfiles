@@ -8,6 +8,11 @@ enable_color_support() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Load OS specific color support.
 
+    for entry in ./*
+    do
+        echo "$entry"
+    done
+
     . "shell_colors"
 }
 
