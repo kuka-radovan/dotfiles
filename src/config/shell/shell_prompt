@@ -8,7 +8,27 @@ enable_color_support() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Load OS specific color support.
 
-    . "shell_colors"
+    LS_COLORS=""
+
+    LS_COLORS+="gx" # Directory
+    LS_COLORS+="fx" # Symbolic link
+    LS_COLORS+="cx" # Socket
+    LS_COLORS+="dx" # Pipe
+    LS_COLORS+="cx" # Executable
+    LS_COLORS+="eg" # Block special
+    LS_COLORS+="ed" # Character special
+    LS_COLORS+="ab" # Executable with setuid bit set
+    LS_COLORS+="ag" # Executable with setgid bit set
+    LS_COLORS+="cc" # Directory writable to others, with sticky bit
+    LS_COLORS+="bd" # Directory writable to others, without sticky bit
+
+    export LS_COLORS
+    export CLICOLOR=1
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Enable color support.
+
+    alias ls="ls -G"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

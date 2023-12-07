@@ -188,6 +188,7 @@ main() {
 
     ./create_symbolic_links.sh "$@"
     ./create_local_config_files.sh
+    ./install/main.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

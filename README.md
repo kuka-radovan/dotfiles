@@ -6,11 +6,12 @@ Personal macOS dotfiles.
 
 ⚠️ The installation may overwrite existing dotfiles and settings. ⚠️
 
-To set up the dotfiles run the appropriate snippet in the terminal:
+1. Update macOS to the latest version through system preferences
+2. To set up new mac run snippet in the terminal:
 
-```sh
-bash -c "$(curl -LsS https://raw.github.com/kuka-radovan/dotfiles/HEAD/src/setup.sh)"
-```
+   ```zsh
+   bash -c "$(curl -LsS https://raw.github.com/kuka-radovan/dotfiles/HEAD/src/setup.sh)"
+   ```
 
 That's it! ✨
 
@@ -20,4 +21,5 @@ If you decide to fork this project, do not forget to substitute my username with
 
 ## Credits
 
-Highly inspired by [Cătălin Mariș's](https://github.com/alrra/dotfiles) dotfiles
+Highly inspired by [Cătălin Mariș's](https://github.com/alrra/dotfiles) and [
+Dries Vints](https://github.com/driesvints/dotfiles) dotfiles

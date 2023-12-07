@@ -1,0 +1,102 @@
+# Taps
+tap "homebrew/cask-fonts"
+tap "homebrew/bundle"
+
+# Binaries
+brew "awscli"
+brew "bash"  # Latest Bash version
+brew "cocoapods"
+brew "coreutils" # Those that come with macOS are outdated
+brew "ffmpeg"
+brew "gh"
+brew "git"
+brew "grep"
+brew "imagemagick"
+brew "mas" # Mac App Store manager
+brew "tree"
+
+# Development
+brew "node"
+#brew "scrcpy" # Display and control your Android device
+cask "dbeaver-community"
+cask "dbngin"
+cask "docker"
+cask "fig"
+cask "figma"
+cask "imageoptim"
+cask "iterm2"
+cask "postman"
+cask "visual-studio-code"
+cask "webstorm"
+
+# Apps
+cask "alfred"
+cask "appcleaner"
+cask "bitwarden"
+cask "discord"
+cask "dropbox"
+cask "franz"
+cask "free-ruler"
+cask "notion"
+cask "pastebot"
+cask "recordit"
+cask "spotify"
+cask "the-unarchiver"
+cask "toggl-track"
+
+# Browsers
+cask "brave-browser"
+cask "firefox"
+cask "google-chrome"
+cask "responsively"
+
+# Quicklook Plugins
+cask "qlmarkdown"
+cask "quicklook-json"
+
+# Fonts
+cask 'font-lato'
+cask 'font-open-sans'
+cask 'font-roboto'
+cask 'font-source-code-pro-for-powerline'
+cask 'font-source-code-pro'
+
+# Mac App Store
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Speedtest", id: 1153157709
+mas "Xcode", id: 497799835
+
+# VS Code Extensions
+vscode "42Crunch.vscode-openapi"
+vscode "bierner.github-markdown-preview"
+vscode "bierner.lit-html"
+vscode "bierner.markdown-checkbox"
+vscode "bierner.markdown-emoji"
+vscode "bierner.markdown-footnotes"
+vscode "bierner.markdown-mermaid"
+vscode "bierner.markdown-preview-github-styles"
+vscode "christian-kohler.path-intellisense"
+vscode "DavidAnson.vscode-markdownlint"
+vscode "dbaeumer.vscode-eslint"
+vscode "eamodio.gitlens"
+vscode "EditorConfig.EditorConfig"
+vscode "emmanuelbeziat.vscode-great-icons"
+vscode "esbenp.prettier-vscode"
+vscode "formulahendry.auto-close-tag"
+vscode "formulahendry.auto-rename-tag"
+vscode "Gruntfuggly.todo-tree"
+vscode "Ionic.ionic"
+vscode "mikestead.dotenv"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-vscode-remote.remote-containers"
+vscode "nrwl.angular-console"
+vscode "octref.vetur"
+vscode "redhat.vscode-yaml"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "Vue.volar"
+vscode "Vue.vscode-typescript-vue-plugin"
+vscode "withfig.fig"
+vscode "wix.vscode-import-cost"
+vscode "zhuangtongfa.material-theme"
