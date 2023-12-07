@@ -36,7 +36,7 @@ install_homebrew_bundle() {
 install_apps_with_brewfile() {
     declare -r $DOTFILES_PATH="$(pwd)"
 
-    execute "brew bundle install --file=$DOTFILES_PATH/installations/homebrew/Brewfile --verbose" "Install apps with Brewfile"
+    brew bundle install --file=$DOTFILES_PATH/installations/homebrew/Brewfile --verbose
 }
 
 # ----------------------------------------------------------------------
