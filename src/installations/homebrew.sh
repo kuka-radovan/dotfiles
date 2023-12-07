@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+echo "------------------------------------ $(pwd)"
+
 cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "../utils/general.sh" \
     && . "../utils/brew.sh"
