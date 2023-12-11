@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
-    && . "../utils/general.sh" \
-    && . "../utils/brew.sh"
+    && . "utils/general.sh" \
+    && . "utils/brew.sh"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
-    && . "./general.sh"
+    && . "utils/general.sh"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
