@@ -23,6 +23,8 @@ set_homebrew_to_path() {
     if [[ "$(uname -m)" == "arm64" ]]; then
         echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
+
+        print_result $? "Homebrew path"
     fi
 }
 
