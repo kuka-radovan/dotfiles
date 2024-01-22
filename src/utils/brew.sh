@@ -61,8 +61,8 @@ brew_tap() {
 
 brew_disable_analytics() {
     execute \
-        "brew analytics" \
-        "off"
+        "brew analytics off" \
+        "Disable homebrew analytics"
 }
 
 brew_update() {

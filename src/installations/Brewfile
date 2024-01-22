@@ -11,6 +11,7 @@ brew "ffmpeg"
 brew "gh"
 brew "git"
 brew "grep"
+brew "htop"
 brew "imagemagick"
 brew "mas" # Mac App Store manager
 brew "tree"

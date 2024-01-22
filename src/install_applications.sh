@@ -23,6 +23,8 @@ set_homebrew_to_path() {
     if [[ "$(uname -m)" == "arm64" ]]; then
         echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
+
+        print_result $? "Set Homebrew to PATH"
     fi
 }
 
@@ -36,7 +38,7 @@ install_homebrew_bundle() {
 install_apps_with_brewfile() {
     declare -r $DOTFILES_PATH="$(pwd)"
 
-    brew bundle install --file=$DOTFILES_PATH/installations/homebrew/Brewfile --verbose
+    brew bundle install --file=$DOTFILES_PATH/installations/Brewfile --verbose
 }
 
 # ----------------------------------------------------------------------
