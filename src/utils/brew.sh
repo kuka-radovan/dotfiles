@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 echo '------------------------'
-echo ${BASH_SOURCE[0]}
+echo BASH_SOURCE[0]:-${(%):-%x}
 
 cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "utils/general.sh"
