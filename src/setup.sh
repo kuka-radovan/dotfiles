@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+cd "$(dirname "${(%):-%N}")" \
+    && . "utils/general.sh"
+
 declare -r GITHUB_REPOSITORY="kuka-radovan/dotfiles"
 
 declare -r DOTFILES_RELEASE_BRANCH="ver-2"
@@ -192,15 +195,15 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-     if cmd_exists "git"; then
-         if [ "$(git config --get remote.origin.url)" != "$DOTFILES_ORIGIN" ]; then
-             ./utils/initialize_git_repository.sh "$DOTFILES_ORIGIN"
-         fi
-     fi
+    # if cmd_exists "git"; then
+    #     if [ "$(git config --get remote.origin.url)" != "$DOTFILES_ORIGIN" ]; then
+    #         ./utils/initialize_git_repository.sh "$DOTFILES_ORIGIN"
+    #     fi
+    # fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    # ./ustils/restart.sh
+    # ./utils/restart.sh
 }
 
 main "$@"
