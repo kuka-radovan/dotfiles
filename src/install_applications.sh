@@ -21,7 +21,7 @@ install_homebrew() {
 set_homebrew_to_path() {
 
     if [[ "$(uname -m)" == "arm64" ]]; then
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+        (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
         print_result $? "Set Homebrew to PATH"
@@ -55,6 +55,7 @@ main() {
     brew_update
     brew_upgrade
 
+    print_in_purple "\n   Install applications\n\n"
     install_homebrew_bundle
     install_apps_with_brewfile
 }

@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+echo '------------------------'
+echo ${BASH_SOURCE[0]}
+
 cd "$(dirname "${BASH_SOURCE[0]}")" \
     && . "utils/general.sh"
 
