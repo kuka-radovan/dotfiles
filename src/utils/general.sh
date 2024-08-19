@@ -1,10 +1,10 @@
 #!/bin/zsh
 
 answer_is_yes() {
-    if [[ "$REPLY" =~ '^[Yy]$' ]]; then
-        return 0
+    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+        return 0    # True
     else
-        return 1
+        return 1    # False
     fi
 }
 
