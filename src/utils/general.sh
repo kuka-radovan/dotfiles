@@ -1,9 +1,11 @@
 #!/bin/zsh
 
 answer_is_yes() {
-    [[ "$REPLY" =~ ^[Yy]$ ]] \
-        && return 0 \
-        || return 1
+    if [[ "$REPLY" =~ '^[Yy]$' ]]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 ask() {
