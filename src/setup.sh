@@ -155,7 +155,7 @@ main() {
 
     # Ensure that the following actions are made relative to setup file path.
 
-    cd "$(dirname "${BASH_SOURCE[0]}")" \
+    cd "$(dirname "${(%):-%N}")" \
         || exit 1
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -182,7 +182,7 @@ main() {
     # and if not, it most likely means that the dotfiles were not
     # yet set up, and they will need to be downloaded.
 
-    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh" &> /dev/null || download_dotfiles
+    printf "%s" "${(%):-%N}")" | grep "setup.sh" &> /dev/null || download_dotfiles
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
