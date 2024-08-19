@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-cd "$(dirname "${(%):-%N}")" \
-    && . "utils/general.sh"
-
 declare -r GITHUB_REPOSITORY="kuka-radovan/dotfiles"
 
 declare -r DOTFILES_RELEASE_BRANCH="ver-2"

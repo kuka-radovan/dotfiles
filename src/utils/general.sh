@@ -1,13 +1,10 @@
 #!/bin/zsh
 
 answer_is_yes() {
-    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
-        echo 'TRUE'
-        return 0    # True
-    else
-        echo 'FALSE'
-        return 1    # False
-    fi
+    case "$REPLY" in
+        [Yy]) return 0 ;;
+        *) return 1 ;;
+    esac
 }
 
 ask() {
