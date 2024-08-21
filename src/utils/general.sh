@@ -1,9 +1,7 @@
 #!/bin/zsh
 
 answer_is_yes() {
-    declare -r response="$REPLY"
-
-    echo $REPLY
+    echo "Entered: $REPLY"
 
     if [[ "$REPLY" =~ ^[Yy]$ ]]; then
         return 0    # True
