@@ -3,10 +3,9 @@
 answer_is_yes() {
     declare -r response="$REPLY"
 
-    echo "$response"
-    echo "$response =~ ^[Yy]$"
+    echo $REPLY
 
-    if [[ "$response" =~ ^[Yy]$ ]]; then
+    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
         return 0    # True
     else
         return 1    # False
